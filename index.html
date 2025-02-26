@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Farid Ardiansyah - Page 1</title>
+    <style>
+        /* Gaya CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            line-height: 1.6;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+			 position: fixed;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .navbar .datetime {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 18px;
+        }
+        .navbar .status {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            gap: 10px;
+            margin-right: 40px;
+        }
+        .navbar .status .dots span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            animation: blink 1.4s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        .container {
+            padding: 80px 20px 20px;
+            
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 20px;
+            margin-bottom: 15px;
+			  text-align: justify;
+        }
+        .hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            font-size: 18px;
+			 position: fixed;
+        }
+        .footer .left {
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        .footer .center a {
+            color: white;
+            text-decoration: none;
+            margin: 20px;
+            font-size: 16px;
+        }
+        .footer .center a:hover {
+            text-decoration: underline;
+        }
+        
+        .notice {
+         background-color: transparent; /* Latar belakang transparan */
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .notice a {
+            color: #00ffcc;
+            text-decoration: none;
+        }
+        .notice a:hover {
+            text-decoration: underline;
+        }
+        .ad-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #00ffcc;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+		
+	
+
+/* Gaya Pop-up */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.popup-content {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.popup-content img {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.popup-content button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup-content button:hover {
+    background-color: #009999;
+}
+
+
+
+.chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chatbot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+        .chatbot-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .chatbot-header .status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .chatbot-header .status .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #00ffcc;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+        .chatbot-header .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+		
+		 .chatbot-body {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #1e1e1e;
+        }
+        .chatbot-body .message {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+        .chatbot-body .message.bot {
+            background-color: #333;
+            color: white;
+            align-self: flex-start;
+        }
+        .chatbot-body .message.user {
+            background-color: #00ffcc;
+            color: black;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        .chatbot-footer {
+            display: flex;
+            padding: 10px;
+            background-color: #333;
+        }
+        .chatbot-footer input {
+            flex-grow: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            background-color: #444;
+            color: white;
+        }
+        .chatbot-footer button {
+            background-color: #00ffcc;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+		.chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #00ffcc;
+            color: black;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+		
+		.notification {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: #ffcc00;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    animation: slideIn 0.5s ease-out;
+    z-index: 1001; /* Pastikan notifikasi muncul di atas elemen lain */
+}
+
+@keyframes slideIn {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+		
+		.new-label {
+    background-color: #ff0000; /* Warna latar belakang */
+    color: black; /* Warna teks */
+    padding: 5px 10px; /* Padding */
+    border-radius: 5px; /* Sudut melengkung */
+    font-size: 14px; /* Ukuran font */
+    margin-left: 10px; /* Jarak dari judul */
+    display: inline-block; /* Agar label tidak mengambil seluruh baris */
+}
+
+.document-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .document-item {
+            background-color: transparent;;
+            padding: 15px;
+            border-radius: 10px;
+            width: calc(33.333% - 20px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .document-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .document-item a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+        .document-item a:hover {
+            text-decoration: underline;
+        }
+		.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.by-author {
+    background-color: #1d4ed8; /* Warna biru */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.by-author a {
+    color: white;
+    text-decoration: none;
+}
+
+.by-author a:hover {
+    text-decoration: underline;
+}
+
+
+
+        .color-label {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+		
+		        .calendar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+        }
+        .month {
+            background-color: #FF6347;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .month h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: black;
+        }
+        .month ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .month ul li {
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #FF6347;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .month ul li.new-event {
+            background-color: #4682B4;
+            animation: blink 1.5s infinite;
+        }
+        .month ul li.coming-soon {
+            background-color: #cbe4ff;
+            animation: blink 1.5s infinite;
+        }
+        .month ul li.past-event {
+            background-color: #FFD700; /* Warna abu-abu untuk event yang sudah berlalu */
+			animation: blink 1.5s infinite;
+        }
+		 .month ul li .event-date {
+            font-weight: bold;
+        }
+        .month ul li .event-desc {
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+        .month ul li .new-label {
+            background-color: red;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .month ul li .coming-soon-label {
+            background-color: blue;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .month ul li .past-label {
+            background-color: #ADFF2F; 
+            color: #000000;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .event-list {
+            margin-top: 40px;
+            padding: 50px;
+            background-color: #f0f0f0;
+            border-radius: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .event-list h2 {
+            font-size: 44px;
+            margin-bottom: 25px;
+            color: black;
+        }
+        .event-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+		
+		.event-list ul li {
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #black;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: left;
+        }
+        .event-list ul li.new-event {
+            background-color: #ffcccb;
+            animation: blink 1.5s infinite;
+        }
+        .event-list ul li.coming-soon {
+            background-color: #FFD700;
+            animation: blink 1.5s infinite;
+        }
+        .event-list ul li.past-event {
+            background-color: #ADFF2F; 
+			animation: blink 1.5s infinite;
+        }
+		
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+            max-width: 800px;
+        }
+
+        .skill {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .skill img {
+            width: 80px;
+            height: 80px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .skill:hover img {
+            transform: scale(1.2);
+        }
+
+        .skill p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* Animasi Scroll */
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .testimonial-track {
+            display: flex;
+            gap: 20px;
+            white-space: nowrap;
+        }
+		
+		   .testimonial {
+            display: flex;
+            align-items: center;
+            background: #222;
+            border-radius: 12px;
+            padding: 10px;
+            min-width: 250px;
+            max-width: 250px;
+            gap: 10px;
+            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+            white-space: normal;
+        }
+
+        .testimonial img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .text-content {
+            display: flex;
+            flex-direction: column;
+        }
+		
+		
+        .name {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .desc {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Animasi Bergerak */
+        @keyframes moveLeft {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        @keyframes moveRight {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(100%); }
+        }
+
+        .track-left {
+            animation: moveLeft 30s linear infinite;
+        }
+
+        .track-right {
+            animation: moveRight 30s linear infinite;
+        }
+		
+		  .container {
+            display: flex;
+            gap: 15px;
+            overflow: hidden;
+        }
+
+       
+         .phone {
+            width: 250px;
+            height: 500px;
+            border-radius: 30px;
+            background: #111;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+            border: 2px solid #333;
+        }
+		
+		 /* Efek hover - HP naik ke atas */
+        .phone:hover {
+            transform: translateY(-15px);
+        }
+
+        /* Bagian Video Chat */
+        .video-chat {
+            width: 100%;
+            height: 60%;
+            background: black;
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+		
+		
+        .chat {
+            padding: 10px;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            overflow: auto;
+        }
+
+        .message {
+            color: white;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .message.right {
+            align-self: flex-end;
+            background: #0078ff;
+        }
+		
+		  /* Bagian Chat */
+        .chat-box {
+            width: 250px;
+            height: 500px;
+            background: white;
+            border-radius: 30px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 5px;
+        }
+
+        .chat-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+   .chat-content {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-footer {
+            padding-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 8px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+        }
+
+ /* Bagian Video Pizza */
+        .pizza-video {
+            width: 250px;
+            height: 500px;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pizza-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+		
+		 .box {
+            display: flex;
+            flex-direction: column;
+        }
+        .icon {
+            font-size: 20px;
+        }
+        .title {
+            font-weight: bold;
+            color: white;
+        }
+		
+		
+/* Styling untuk Kotak Pertanyaan */
+.question-box {
+  position: fixed; /* Tetap di posisi yang sama saat di-scroll */
+  bottom: 20px;
+  left: 50%; /* Posisi horizontal tengah */
+  background-color: #transparent;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  opacity: 0; /* Awalnya tersembunyi */
+  transform: translateY(20px); /* Awalnya sedikit di bawah layar */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Transisi untuk animasi */
+}
+
+.question-box.show {
+  opacity: 1; /* Tampilkan */
+  transform: translateY(0); /* Pindahkan ke posisi akhir */
+}
+
+.question-box img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.question-box-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-box h3 {
+  margin: 0;
+}
+
+.question-box a {
+  color: #fff;
+  text-decoration: none;
+}
+footer {
+  padding: 10px; /* Jarak padding di dalam footer */
+  text-align: center; /* Teks rata tengah */
+  position: fixed; /* Footer tetap di bawah layar */
+  bottom: 0; /* Posisi footer di bagian bawah */
+  width: 100%; /* Lebar footer 100% */
+}
+
+footer p {
+  font-size: 20px; /* Ukuran font */
+  color: #fff; /* Warna teks */
+}
+
+.daftar-lagu {
+  background: transparent; /* Gradien abu-abu ke putih */
+  padding: 20px;
+  border-radius: 30px; /* Sudut membulat */
+  font-family: sans-serif; /* Font sans-serif */
+}
+
+.judul {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.lagu {
+  display: flex; /* Mengatur elemen горизонтально */
+  align-items: center; /* Memusatkan vertikal */
+  padding: 10px 0; /* Jarak antar lagu */
+}
+
+.warna-aksen {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /* Bulat sempurna */
+  margin-right: 10px;
+}
+
+.biru {
+  background-color: red;
+}
+
+.hijau {
+  background-color: green;
+}
+
+/* Warna aksen lainnya */
+
+.info-lagu {
+  flex: 1; /* Memenuhi ruang yang tersedia */
+}
+
+.judul-lagu {
+  font-weight: bold;
+   font-size: 50px;
+}
+
+.penyanyi {
+  font-size: 50px;
+  color: #fff; /* Abu-abu gelap */
+}
+.footer-content a:hover {
+    transform: translateY(-2px); /* Teks sedikit naik saat dihover */
+}
+
+.ikon-spotify:hover {
+    transform: rotate(15deg); /* Logo berputar sedikit saat dihover */
+}
+.warna-aksen {
+    animation: changeColor 5s infinite alternate; /* Animasi perubahan warna */
+}
+
+@keyframes changeColor {
+    0% {
+        background-color: blue;
+    }
+    25% {
+        background-color: green;
+    }
+    50% {
+        background-color: yellow;
+    }
+    100% {
+        background-color: blue;
+    }
+}
+
+
+.garis-waktu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    width: 4px;
+    background-color: #transparent; /* Warna garis waktu */
+}
+
+.kontainer {
+    padding: 20px; /* Padding lebih kecil */
+    background-color: #transparent; /* Warna latar belakang kontainer */
+    position: relative;
+    border-radius: 8px;
+    margin-bottom: 10px; /* Margin lebih kecil */
+}
+
+.lingkaran {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #transparent; /* Warna lingkaran */
+    position: absolute;
+    left: 50%;
+    margin-left: -6px;
+    top: 10px; /* Posisi lingkaran lebih atas */
+}
+
+.teks {
+    padding-left: 20px; /* Jarak antara lingkaran dan teks lebih kecil */
+}
+
+.teks h2 {
+    margin-bottom: 5px;
+}
+
+.judul-timeline {
+    position: relative;
+    margin-bottom: 20px; /* Jarak antara judul dan timeline */
+}
+
+footer {
+  background-color: #transparent; /* Warna latar belakang footer */
+  padding: 20px;
+  text-align: center;
+   position: fixed;
+}
+
+.footer-content {
+  display: flex; /* Mengatur elemen di dalam footer secara horizontal */
+  justify-content: space-between; /* Memisahkan elemen ke kiri dan kanan */
+  align-items: center; /* Memposisikan elemen secara vertikal di tengah */
+   position: fixed;
+}
+
+.update-info {
+  background-color:  #transparent; /* Warna blok */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.footer-links {
+  /* Styling untuk tautan footer */
+}
+
+.blink-dots {
+  display: inline-block;
+  margin-right: 5px; /* Jarak antara titik dan teks */
+}
+
+.blink {
+  animation: blinking 1s infinite;
+}
+
+@keyframes blinking {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.link {
+    color: #c4c4c4; /* Warna abu-abu seperti di gambar */
+    font-size: 24px; /* Ukuran font */
+    text-decoration: none; /* Hilangkan garis bawah */
+    display: inline-flex;
+    align-items: center;
+    font-weight: 400; /* Ketebalan font */
+    gap: 6px; /* Jarak antara teks dan panah */
+	 line-height: 1;
+}
+
+.arrow {
+    width: 40px; /* Ukuran panah */
+    height: 46px;
+	display: flex; /* menjadikan SVG sebagai flex container */
+    align-items: center; /* mengatur konten SVG di tengah */
+    justify-content: center; /* mengatur konten SVG di tengah */
+	 line-height: 1;
+
+}
+
+.links-container {
+  /* Style the container if needed (e.g., margins, background) */
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #c4c4c4;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.arrow {
+    width: 40px; /* Ukuran panah */
+    height: 46px;
+	display: flex; /* menjadikan SVG sebagai flex container */
+    align-items: center; /* mengatur konten SVG di tengah */
+    justify-content: center; /* mengatur konten SVG di tengah */
+	 line-height: 1;
+
+}
+
+.link:hover {
+  color: white;
+}
+
+.link:hover .arrow path {
+  stroke: white;
+}
+
+#teks {
+ font-family: monospace; /* Font monospace agar karakter ASCII rata */
+  white-space: pre; /* Mempertahankan spasi dan baris baru */
+  font-size: 40px; /* Ukuran font lebih besar */
+  font-weight: bold; /* Teks tebal */
+}
+
+#teks {
+      transition: opacity 0.5s ease; /* Transisi untuk opacity */
+}
+
+.text-container {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+		
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+		
+		 #location {
+            font-size: 18px;
+            color: #333;
+            background: white;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+			 padding-left: 20px;
+        }
+		
+		h1 {
+            font-size: 30px;
+            color: #fff;
+        }
+        .certificates {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .certificate {
+            padding: 10px;
+            width: 500px;
+            transition: transform 0.3s ease;
+        }
+        .certificate:hover {
+            transform: scale(1.05);
+        }
+        .certificate img {
+            width: 100%;
+            border-radius: 10px;
+            border: 5px solid;
+        }
+        .green-border { border-color: #6fcf97; }
+        .blue-border { border-color: #2f80ed; }
+        .cert-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #fff;
+        }
+        .cert-source {
+            font-size: 20px;
+            color: #fff;
+        }
+
+
+     .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.marquee-content {
+    display: flex;
+    gap: 50px;
+}
+
+.marquee-content.left {
+    animation: marquee-left 10s linear infinite;
+}
+
+.marquee-content.right {
+    animation: marquee-right 10s linear infinite;
+}
+
+.marquee {
+    font-size: 56px;
+    font-weight: bold;
+    color: #f4f1e6;
+    text-decoration: none;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.arrow {
+    font-size: 55px;
+    font-weight: bold;
+    color: #f4f1e6;
+    margin-left: 10px;
+}
+
+@keyframes marquee-left {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes marquee-right {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+	
+	
+	 .gallery {
+            display: flex;
+            overflow: hidden;
+            width: 90vw;
+            padding: 20px 0;
+            position: relative;
+        }
+        .gallery img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            margin: 0 10px;
+            border-radius: 10px;
+        }
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+        @keyframes scroll-right {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        .scroll-container {
+            display: flex;
+            animation: scroll-left 10s linear infinite;
+        }
+        .scroll-container-right {
+            display: flex;
+            animation: scroll-right 10s linear infinite;
+        }
+	
+	  }
+         h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: green;
+            font-weight: normal;
+        }
+        .experience {
+            max-width: 600px;
+            border-top: 1px solid #white;
+        }
+        .job {
+            border-bottom: 1px solid #white;
+            padding: 15px 0;
+            cursor: pointer;
+        }
+        .job h3 {
+            margin: 0;
+            font-size: 22px;
+        }
+        .job h4 {
+            margin: 5px 0;
+            font-size: 18px;
+            color: white;
+            font-weight: normal;
+        }
+        .details {
+            display: none;
+            padding-top: 10px;
+            font-size: 14px;
+            color: #white;
+        }
+        .toggle-btn {
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+		 span.highlight {
+            color: #ADFF2F;
+            font-weight: bold;
+			 font-size: 19px;
+        }
+
+.divider {
+            width: 80%;
+            height: 1px;
+            background: #ddd;
+        }
+		
+		.work-container { {
+            display: flex;
+            max-width: 900px;
+            align-items: right;
+        }
+        
+        .work-section {
+            max-width: 500px;
+            margin-right: 20px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #black;
+        }
+        
+        .highlight {
+            color: #7FFF00;
+            font-weight: 600;
+        }
+        
+        .image-container img {
+            width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+		
+		
+
+    </style>
+</head>
+<body>
+<!-- Pop-up -->
+<div id="popup" class="popup-overlay">
+    <div class="popup-content">
+        <img src="images/5.jpg" alt="Update Gambar">
+        <p>Mohon Maaf Website sedang dalam proses update. Mohon bersabar! Terima Kasih</p>
+        <button onclick="closePopup()">Tutup</button>
+    </div>
+</div>
+<script> 
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+
+    window.onload = function() {
+        setTimeout(() => {
+            document.getElementById("popup").style.display = "flex";
+        }, 500); // Delay agar pop-up muncul setelah halaman dimuat
+    };
+</script>
+
+<body>
+    <nav class="navbar">
+	<div class="brand">
+        <h1>Farid Ardiansyah</h1>  
+		<span class="by-author">
+            by <a href="https://www.instagram.com/fardardinsyh">@fardardinsyh</a>
+        </span>
+		</div>
+        <div class="datetime">
+            <span id="greeting"></span>
+            <span id="day"></span>
+        </div>
+        <div class="status">
+            <span id="status-text">Bersedia</span>
+            <div class="dots">
+                <span></span>
+            </div>
+        </div>
+    </nav>
+	<nav>
+	
+
+
+	
+	 <div class="container">
+        <div class="box">
+            <i class="material-icons">work</i>  <!-- Untuk "Recent Experience" -->
+            <div class="title">Recent Experience</div>
+            <div class="text">Coming Soon.</div>
+        </div>
+        <div class="box">
+            <i class="material-icons">place</i> <!-- Untuk "Location" -->
+            <div class="title">Location</div>
+            <div class="text">Indonesia</div>
+        </div>
+    </div>
+
+	
+	             <p>
+       Saya adalah seorang lulusan di jurusan <span class="highlight">Sistem Komputer</span>. dengan fokus belajar dalam
+        <span class="highlight">Arduino, pemrograman</span>, Saya memiliki pengalaman dalam membangun proyek berbasis Arduino,
+    </p>
+
+
+    <div class="container">
+        <div class="content">
+            
+			 <h2> Pendidikan</h2>
+    <div class="experience">
+        <div class="job" onclick="toggleDetails(this)">
+            <h3>Universitas Gunadarma<span class="toggle-btn">×</span></h3>
+            <h4>S1 SISTEM KOMPUTER (S.Kom)</h4>
+            <div class="details" style="display: block;">
+                <p>2019 - 2023</p>
+                 <p>
+        Halo saya lulusan <span class="highlight">Sistem Komputer </span> Di Universitas Gunadarma
+        <span class="highlight">selama saya kuliah, saya lebih tertarik ke arduino dan pemrograman</span>, selama kuliah saya menjalanin project dari Penelitian Ilmiah, Proyek Sistem Komputer sampai Skripsi.
+    </p>
+            </div>
+        </div>
+    </div>
+<div class="divider"></div>
+ 
+ 
+ 
+			 <h2> Pengalaman </h2>
+    <div class="experience">
+        <div class="job" onclick="toggleDetails(this)">
+            <h3>PT. KERETA COMMUTER INDONESIA – DIPO DEPOK<span class="toggle-btn">×</span></h3>
+            <h4>(PKL) - Teknisi</h4>
+            <div class="details" style="display: block;">
+                <p>JAN 2018- FEB 2018</p>
+                 <p>
+        Halo, saya sudah menjalanin pengalaman kerja <span class="highlight">Memonitoring dan melakukan pengecekan terhadap uji coba krl </span>.  Bertanggung jawab terhadap pekerjaan setiap divisi dipo depok krl.
+        <span class="highlight"> Melakukan kegiatan pencucian komponen, melalukan pemasangan dan pengecekan komponen</span>, Pengendalian terhadap kegiatan dari pagi sampai selesai pekerjaan.
+    </p>
+            </div>
+        </div>
+    </div>
+	
+	<div class="divider"></div>
+	
+	
+	
+			 <h2> Project</h2>
+    <div class="experience">
+        <div class="job" onclick="toggleDetails(this)">
+            <h3>Project Sistem Komputer<span class="toggle-btn">×</span></h3>
+            <h4></h4>
+            <div class="details" style="display: block;">
+                <p>2022 dan 2023</p>
+                 <p>
+        Halo, saya sudah menjalanin project selama kuliah <span class="highlight">PROTOTIPE SISTEM PENYIRAMAN TANAMAN OTOMATIS BERBASIS ARDUINO UNO MENGGUNAKAN TANAMAN KURA ( Penulisan Ilmiah 2022 ) </span>. PROTOTIPE SISTEM ALARM PENDETEKSI ASAP DAN KEBAKARAN DINI MENGGUNAKAN KIPAS DAN POMPA AIR BERBASIS ARDUINO UNO ( Skripsi 2023 ).
+        <span class="highlight"> prototipe sistem monitoring kelembaban tanah penyiraman tanaman otomatis pada tanaman kedongdong berbasis arduino ( Proyek Sistem Komputer 2022 )</span>
+    </p>
+            </div>
+        </div>
+    </div>
+	
+	<div class="divider"></div>
+
+
+			 <h2> Perjalanan Hidup</h2>
+    <div class="experience">
+        <div class="job" onclick="toggleDetails(this)">
+            <h3>Selama Kuliah<span class="toggle-btn">×</span></h3>
+            <h4></h4>
+            <div class="details" style="display: block;">
+                <p>2019 - 2023</p>
+                 <p>
+        <span class="highlight">Volunteer financial event  - BEM FIKTI UG Depok 2019 </span>. Mengikuti lomba robot line follower di jurusan sistem komputer  - Lab Muro UG Depok 2019, mengikuti UKM Bela Diri Karate Sabuk Biru di Universitas Gunadarma Depok 2019.
+        <span class="highlight"> menjadi anggota UKM Fajrul Islam UG Depok 2021 - 2022</span> <span class="highlight">, Panitia Kegiatan menyambut Mahasiswa Baru UKM Fajrul Islam UG Depok 2022</span>, <span class="highlight"> Panitia Kurma ( kegiatan ramadhan) UKM Fajrul Islam UG Depok 2022</span>, <span class="highlight"> Anggota Syiar UKM Fajrul Islam UG Depok 2022</span>, <span class="highlight"> mengikuti course 2023</span>
+    </p>
+            </div>
+        </div>
+		
+		 <div class="job" onclick="toggleDetails(this)">
+            <h3>Selama Kerja <span class="toggle-btn">+</span></h3>
+            <h4></h4>
+            <div class="details">
+                <p></p>
+            </div>
+        </div>
+		
+        
+    </div>
+	
+	<div class="divider"></div>
+			
+
+<div class="skills-container">
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"><p>HTML</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"><p>CSS</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"><p>JavaScript</p></div>
+    </div>
+				
+ <!-- Daftar Dokumen -->
+            <div class="document-list">
+			<h2 class="hidden">Resumé ATS Farid Ardiansyah<span class="new-label">New</span></h2>
+                <div class="document-item hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="PDF Icon">
+                    <a href="#">Resume ATS_Farid Ardiansyah</a>
+                </div>
+				
+				</div>
+            </div>
+        </div>
+    </div>
+	
+	
+
+    <div class="container">
+        <div class="calendar" id="calendar">
+            <!-- Data kalender akan diisi oleh JavaScript -->
+        </div>
+
+        <!-- Daftar Event -->
+        <div class="event-list">
+            <h2>Daftar Event</h2>
+            <ul id="eventList">
+                <!-- Daftar event akan diisi oleh JavaScript -->
+            </ul>
+        </div>
+    </div>
+	
+	    <div class="testimonial-container">
+        <!-- Baris Testimonial ke Kiri -->
+        <div class="testimonial-track track-left">
+            <div class="testimonial"><img src="" alt="User"><div class="text-content"><span class="name">Coming Soon</span><span class="desc">"Coming Soon, Coming Soon, Coming Soon, Coming Soon, Coming Soon"</span></div></div>
+            <div class="testimonial"><img src="" alt="User"><div class="text-content"><span class="name">Coming Soon</span><span class="desc">"Coming Soon, Coming Soon, Coming Soon, Coming Soon, Coming Soon"</span></div></div>
+            <div class="testimonial"><img src="" alt="User"><div class="text-content"><span class="name">Coming Soon</span><span class="desc">"Coming Soon, Coming Soon, Coming Soon, Coming Soon, Coming Soon"</span></div></div>
+            <div class="testimonial"><img src="" alt="User"><div class="text-content"><span class="name">Coming Soon</span><span class="desc">"Coming Soon, Coming Soon, Coming Soon, Coming Soon, Coming Soon"</span></div></div>
+            <div class="testimonial"><img src="" alt="User"><div class="text-content"><span class="name">Coming Soon</span><span class="desc">"Coming Soon, Coming Soon, Coming Soon, Coming Soon, Coming Soon"</span></div></div>
+        </div>
+
+        <!-- Baris Testimonial ke Kanan -->
+        <div class="testimonial-track track-right">
+            <div class="testimonial"><img src="" alt="User"><div class="text-content"><span class="name">Coming Soon</span><span class="desc">"Coming Soon, Coming Soon, Coming Soon, Coming Soon, Coming Soon"</span></div></div>
+            <div class="testimonial"><img src="" alt="User"><div class="text-content"><span class="name">Coming Soon</span><span class="desc">"Coming Soon, Coming Soon, Coming Soon, Coming Soon, Coming Soon"</span></div></div>
+            <div class="testimonial"><img src="" alt="User"><div class="text-content"><span class="name">Coming Soon</span><span class="desc">"Coming Soon, Coming Soon, Coming Soon, Coming Soon, Coming Soon"</span></div></div>
+            <div class="testimonial"><img src="" alt="User"><div class="text-content"><span class="name">Coming Soon</span><span class="desc">"Coming Soon, Coming Soon, Coming Soon, Coming Soon, Coming Soon"</span></div></div>
+            <div class="testimonial"><img src="" alt="User"><div class="text-content"><span class="name">Coming Soon</span><span class="desc">"Coming Soon, Coming Soon, Coming Soon, Coming Soon, Coming Soon"</span></div></div>
+        </div>
+    </div>
+	
+	
+	
+	<div class="daftar-lagu">
+    <div class="judul">Playlist Lagu Versi 2025</div>
+	        </div>
+
+    <div class="lagu">
+        <div class="warna-aksen biru"></div>
+        <div class="info-lagu">
+            <div class="judul-lagu">Suatu Saat Nanti</div>
+            <div class="penyanyi">Hanin dhya</div>
+		</div>
+		        </div>
+
+    <div class="lagu">
+        <div class="warna-aksen hijau"></div>
+        <div class="info-lagu">
+            <div class="judul-lagu">Pupus</div>
+            <div class="penyanyi">Hanin dhya</div>
+        </div>
+		</div>
+		
+		<div class="lagu">
+        <div class="warna-aksen hijau"></div>
+        <div class="info-lagu">
+            <div class="judul-lagu">Mars Mahasiswa</div>
+            <div class="penyanyi">Marjinal</div>
+        </div>
+		</div>
+		
+		<div class="lagu">
+        <div class="warna-aksen hijau"></div>
+        <div class="info-lagu">
+            <div class="judul-lagu">Buruh Tani</div>
+            <div class="penyanyi">Marjinal</div>
+        </div>
+</div>
+</div>
+        
+
+	
+	
+	  <div class="container">
+        <!-- Video Chat -->
+        <div class="phone">
+            <div class="video-chat">
+                <video autoplay loop muted>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Browser tidak mendukung video.
+                </video>
+            </div>
+            <div class="chat">
+                <div class="message">Halo!!</div>
+                <div class="message">Kamu Siapa?</div>
+                <div class="message right">Nama Saya Farid Ardiansyah...</div>
+            </div>
+        </div>
+		<!-- Chat UI -->
+        <div class="chat-box">
+            <div class="chat-header">
+                <img src="" alt="User">
+                <span>Farid Ardiansyah</span>
+            </div>
+            <div class="chat-content">
+                <div class="message">Halo!!</div>
+                <div class="message right">Kamu Sudah Punya Pacar ?</div>
+                <div class="message right">Durung ...</div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Message...">
+            </div>
+        </div>
+		
+		 <!-- Video Pizza -->
+        <div class="pizza-video">
+            <video autoplay loop muted>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Browser tidak mendukung video.
+            </video>
+        </div>
+    </div>
+	
+<div id="teks">Farid Ardiansyah</div>
+    <div class="certificates">
+        <div class="certificate">
+            <img src="images/3.jpg" alt="Data Science Journey" class="green-border">
+            <div class="cert-title">Data Science Journey</div>
+            <div class="cert-source">Rakamin Academy</div>
+        </div>
+        <div class="certificate">
+            <img src="images/4.jpg" alt="HTML Dan CSS" class="blue-border">
+            <div class="cert-title">HTML Dan CSS</div>
+            <div class="cert-source">CodePolitan</div>
+        </div>
+		<div class="certificate">
+            <img src="images/7.jpg" alt="Pemrograman dengan C" class="blue-border">
+            <div class="cert-title">Pemrograman dengan C</div>
+            <div class="cert-source">dicoding</div>
+        </div>
+		<div class="certificate">
+            <img src="images/6.jpg" alt="Create Website HTML 5" class="blue-border">
+            <div class="cert-title">Create Website HTML 5</div>
+            <div class="cert-source">LEPKOM</div>
+        </div>
+		<div class="certificate">
+            <img src="images/9.jpg" alt="Programan Javascript" class="blue-border">
+            <div class="cert-title">Programan Javascript</div>
+            <div class="cert-source">LEPKOM</div>
+        </div>
+		<div class="certificate">
+            <img src="images/10.jpg" alt="MICROCONTROLLER" class="blue-border">
+            <div class="cert-title">MICROCONTROLLER</div>
+            <div class="cert-source">LEPKOM</div>
+        </div>
+    </div>
+	
+	
+	<div class="marquee-container">
+    <div class="marquee-content left">
+        <a href="https://phenomenal-sprinkles-943074.netlify.app/" class="marquee">Titip Pesan saya <span class="arrow">↗</span></a>
+        <a href="https://guileless-brigadeiros-4080c3.netlify.app/" class="marquee">Resume <span class="arrow">↗</span></a>
+        <a href="https://keen-twilight-9c7df4.netlify.app/" class="marquee">EMAIL ME <span class="arrow">↗</span></a>
+        <a href="https://meek-sunshine-da952f.netlify.app/" class="marquee">Selamat Datang di Blog Farid Ardiansyah <span class="arrow">↗</span></a>
+    </div>
+    <div class="marquee-content right">
+        <a href="https://hilarious-kringle-006908.netlify.app/" class="marquee">PHOTO <span class="arrow">↗</span></a>
+        <a href="https://elaborate-zabaione-06db44.netlify.app/?fbclid=PAZXh0bgNhZW0CMTEAAaaZiBvUzz5gQRgkM2PfJZss6bBT56tGfHY7SA5rtG0lQM5fqenx9E5CHR0_aem_uoSHXePfrmwBBTxhbFQSTw" class="marquee">Forum Komentar <span class="arrow">↗</span></a>
+        <a href="https://keen-twilight-9c7df4.netlify.app/" class="marquee">Aktivititas Harian <span class="arrow">↗</span></a>
+    </div>
+</div>
+
+	
+	<div class="gallery">
+        <div class="scroll-container">
+            <img src="images/11.jpg" alt="Image 1">
+            <img src="images/12.jpg" alt="Image 2">
+            <img src="images/13.jpg" alt="Image 3">
+            <img src="images/14.jpg" alt="Image 4">
+            <img src="images/15.jpg" alt="Image 5">
+        </div>
+    </div>
+    <div class="gallery">
+        <div class="scroll-container-right">
+            <img src="images/20.jpg" alt="Image 6">
+            <img src="images/21.jpg" alt="Image 7">
+            <img src="images/22.jpg" alt="Image 8">
+            <img src="images/23.jpg" alt="Image 9">
+            <img src="images/25.jpg" alt="Image 10">
+        </div>
+    </div>
+	
+      
+	   <div class="work-container">
+        <div class="work-section">
+            <h1> PROTOTIPE SISTEM ALARM PENDETEKSI ASAP DAN KEBAKARAN DINI MENGGUNAKAN KIPAS DAN POMPA AIR BERBASIS ARDUINO UNO</h1>
+            <p class="subtitle">Penelitian Skripsi Di Universitas Gunadarma • 2023</p>
+            <p>A Scientific Research, <span class="highlight">carrying out coding programming via Arduino for fire sensor,</span> MQ-2 smoke sensor, 2 Channel Relay Module, 12 V Mini Water Pump, 5v Buzzer, 12V Mini Fan, 16x2 i2c LCD, wiring each component.</p>
+            <p>installing cables to the module relay, installing prototype tools,testing tools, checking programming coding, the results are good, the tools are in accordance with the programming.</p>
+        </div>
+        <div class="image-container">
+            <img src="images/21.jpg" alt="Work Experience Image">
+        </div>
+    </div>
+	
+	  <div class="work-container">
+        <div class="work-section">
+            <h1> PROTOTIPE SISTEM PENYIRAMAN TANAMAN OTOMATIS BERBASIS ARDUINO UNO MENGGUNAKAN TANAMAN KURA</h1>
+            <p class="subtitle">Penulisan Ilmiah Di Universitas Gunadarma • 2022</p>
+            <p>scientific writing, <span class="highlight"> programming coding via Arduino for soil moisture sensor, LM 35 temperature sensor, DS1302 RTC Module, 2 Channel Relay Module, 16x2 i2c LCD,12 V Mini Water Pump, wiring each component,</span> installing cables to the relay module, installing prototype tools,
+conducting trials tool, checking programming coding, the results are good, the tool is in accordance with the programming.</p>
+        </div>
+        <div class="image-container">
+            <img src="images/20.jpg" alt="Work Experience Image">
+        </div>
+    </div>
+	
+
+       
+	 
+	 <div class="marquee-container">
+    <div class="marquee-content left">
+        <a href="" class="marquee">HALLÅ - GUTEN TAG<span class="arrow">↗</span></a>
+        <a href="" class="marquee">MERHABA - ZDRAVO <span class="arrow">↗</span></a>
+        <a href="" class="marquee">HELLO - BONJOUR<span class="arrow">↗</span></a>
+        <a href="" class="marquee">IA DHUIT - SZIA <span class="arrow">↗</span></a>
+    </div>
+    <div class="marquee-content right">
+        <a href="" class="marquee">HOLA - CIAO<span class="arrow">↗</span></a>
+        <a href="" class="marquee">OLÁ - NAMASTE<span class="arrow">↗</span></a>
+        <a href="" class="marquee">KONNICHIWA - ANNYEONG<span class="arrow">↗</span></a>
+    </div>
+</div>
+
+   
+	
+
+	 <h1> Terima kasih saya untuk kamu</h1>           <h1> Made with love in, Indonesia ID</h1>
+	
+	<div class="marquee-container">
+    <div class="marquee-content left">
+        <a href="" class="marquee">Interview<span class="arrow">↗</span></a>
+		 <a href="" class="marquee">Kontak Media<span class="arrow">↗</span></a>
+    </div>
+
+<div class="marquee-content right">
+        <a href="https://aquamarine-truffle-bfd6b3.netlify.app/" class="marquee">Jadwal Sholat <span class="arrow">↗</span></a>
+		<a href="" class="marquee">Change LOG<span class="arrow">↗</span></a>
+    </div>
+</div>
+
+	
+	
+	
+    <footer class="footer">
+        <div class="left">
+		<div class="update-info">
+      Updated 24.02.25
+    </div>
+     Farid Ardiansyah
+        </div>             
+        </div>
+    </footer>
+
+    <!-- Notifikasi Iklan -->
+    <div class="ad-notification" id="adNotification">
+        🎉 Selamat datang di halaman Farid Ardiansyah!
+    </div>
+	
+	<div class="notification" id="chatbotNotification">
+    💬 Pesan baru dari Chatbot!
+    <button onclick="closeNotification()" style="background: none; border: none; color: black; cursor: pointer;">×</button>
+</div>
+
+<!-- Tombol Toggle Chatbot -->
+<div class="chatbot-toggle" onclick="toggleChatbot()">💬</div>
+
+    <!-- Container Chatbot -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <!-- Header Chatbot -->
+        <div class="chatbot-header">
+            <div style="display: flex; align-items: center;">
+                <img src="images/profile.jpg" alt="Chatbot">
+                <span>Chatbot Farid</span>
+            </div>
+            <div class="status">
+                <span>Online</span>
+                <div class="dot"></div>
+            </div>
+            <button class="close-btn" onclick="toggleChatbot()">×</button>
+        </div>
+
+        <!-- Body Chatbot -->
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="message bot">
+                <p>Halo! Saya Chatbot Farid Ardiansyah. Silakan ajukan pertanyaan:</p>
+                <p>1. Ceritakan tentang dirimu.</p>
+                <p>2. Apa skill yang kamu miliki?</p>
+                <p>3. Apa kekurangan dan kelebihanmu?</p>
+            </div>
+        </div>
+
+        <!-- Footer Chatbot -->
+        <div class="chatbot-footer">
+            <input type="text" id="chatInput" placeholder="Ketik pesan..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Kirim</button>
+        </div>
+    </div>
+
+ 
+
+<script>
+
+
+
+function toggleDetails(job) {
+            let details = job.querySelector(".details");
+            let toggleBtn = job.querySelector(".toggle-btn");
+
+            if (details.style.display === "block") {
+                details.style.display = "none";
+                toggleBtn.textContent = "+";
+            } else {
+                details.style.display = "block";
+                toggleBtn.textContent = "×";
+            }
+        }
+
+		
+const texts = ["Ini Budi", "Ini Dinda", "Ini Dodo"];
+        let index = 0;
+        
+        function changeText() {
+            const textElement = document.getElementById("text");
+            textElement.style.opacity = 0;
+            setTimeout(() => {
+                index = (index + 1) % texts.length;
+                textElement.textContent = texts[index];
+                textElement.style.opacity = 1;
+            }, 500);
+        }
+        
+        setInterval(changeText, 2000);
+		
+		
+const teksElement = document.getElementById("teks");
+const teksNormal = teksElement.textContent; // Simpan teks normal
+
+function generateAsciiText(length) {
+  const asciiChars = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * asciiChars.length);
+    result += asciiChars[randomIndex];
+  }
+  return result;
+}
+
+function animasiTeks() {
+    teksElement.style.opacity = 0; // Mulai dengan opacity 0
+
+    setTimeout(() => {
+        // Teks normal menjadi ASCII
+        const panjangTeks = teksNormal.length; // Panjang teks sama dengan teks normal
+        const teksAscii = generateAsciiText(panjangTeks);
+        teksElement.textContent = teksAscii;
+        teksElement.style.opacity = 1; // Tampilkan teks ASCII
+    }, 500); // Tunda sedikit sebelum mengubah ke ASCII
+
+    setTimeout(() => {
+        teksElement.style.opacity = 0; // Mulai dengan opacity 0 lagi
+    }, 2500); // Tunda 2 detik setelah menampilkan ASCII
+
+    setTimeout(() => {
+        // Teks ASCII kembali normal
+        teksElement.textContent = teksNormal;
+        teksElement.style.opacity = 1; // Tampilkan teks normal kembali
+    }, 3000); // Tunda sebentar setelah opacity 0
+
+}
+
+setInterval(animasiTeks, 4000); // Animasi setiap 4 detika
+
+  // 1. Declare a constant to store your API key.  This is the crucial step.
+const apiKey = "b616859287014ce3b7704747251802";  // Your actual API key
+
+// 2. Use the apiKey variable in your fetch call.
+const city = 'Jakarta'; // Or any other city
+const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`; // Use template literal
+
+fetch(apiUrl) // Use the apiUrl variable
+  .then(response => response.json())
+  .then(data => {
+    // ... your code to process the weather data ...
+    console.log(data); // Example: log the data to the console
+
+    const temperature = data.current.temp_c;
+    const condition = data.current.condition.text;
+
+    const weatherInfo = document.getElementById('weather-info');
+    weatherInfo.innerHTML = `
+      <h2>Cuaca di ${city}</h2>
+      <p>Suhu: ${temperature}°C</p>
+      <p>Kondisi: ${condition}</p>
+    `;
+
+  })
+  .catch(error => {
+    console.error("Error fetching weather data:", error);
+  });
+  
+
+            // Animasi saat di-scroll
+        function revealSkills() {
+            const skills = document.querySelectorAll(".skill");
+            const triggerHeight = window.innerHeight * 0.85; // Posisi pemicu animasi
+
+            skills.forEach(skill => {
+                const skillTop = skill.getBoundingClientRect().top;
+                if (skillTop < triggerHeight) {
+                    skill.classList.add("show");
+                }
+            });
+        }
+
+        // Event listener saat scroll
+        window.addEventListener("scroll", revealSkills);
+
+        // Panggil saat pertama kali agar animasi muncul jika sudah terlihat
+        revealSkills();
+
+	  
+        // Fungsi untuk menampilkan pesan selamat berdasarkan waktu
+        function updateGreeting() {
+            const now = new Date();
+            const hour = now.getHours();
+            const greetingElement = document.getElementById('greeting');
+            const statusTextElement = document.getElementById('status-text');
+            let greeting;
+            let statusText;
+
+            if (hour >= 5 && hour < 12) {
+                greeting = "Selamat Pagi, Farid Ardiansyah";
+                statusText = "Jadwal Belajar: Pagi (08:00 - 12:00)";
+            } else if (hour >= 12 && hour < 15) {
+                greeting = "Selamat Siang, Farid Ardiansyah";
+                statusText = "Jadwal Belajar: Siang (13:00 - 15:00)";
+            } else if (hour >= 15 && hour < 18) {
+                greeting = "Selamat Sore, Farid Ardiansyah";
+                statusText = "Jadwal Belajar: Sore (16:00 - 18:00)";
+            } else {
+                greeting = "Selamat Malam, Farid Ardiansyah";
+                statusText = "Jadwal Belajar: Malam (19:00 - 21:00)";
+            }
+
+            greetingElement.textContent = greeting;
+            statusTextElement.textContent = statusText;
+        }
+
+        // Fungsi untuk menampilkan hari
+        function updateDay() {
+            const now = new Date();
+            const options = { weekday: 'long' };
+            const dayElement = document.getElementById('day');
+            dayElement.textContent = now.toLocaleDateString('id-ID', options);
+        }
+
+        // Memperbarui pesan selamat dan hari setiap detik
+        setInterval(() => {
+            updateGreeting();
+            updateDay();
+        }, 1000);
+
+        // Panggil sekali saat halaman dimuat
+        updateGreeting();
+        updateDay();
+
+        // Animasi scroll
+        document.addEventListener("DOMContentLoaded", function() {
+            const elements = document.querySelectorAll('.hidden');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Fungsi untuk menampilkan notifikasi iklan
+        const adNotification = document.getElementById('adNotification');
+        setTimeout(() => {
+            adNotification.style.display = 'none';
+        }, 5000); // Notifikasi hilang setelah 5 detik
+		
+		
+		// Data pertanyaan dan jawaban
+const questionsAndAnswers = {
+    "1": {
+        question: "Ceritakan tentang dirimu.",
+        answer: "Halo! Nama saya Farid Ardiansyah. Saya adalah individu yang suka belajar, mencari pengetahuan, penggemar arduino dan suka fotografi. Saya suka belajar hal-hal baru dan berbagi pengetahuan dengan orang lain."
+    },
+    "2": {
+        question: "Apa skill yang kamu miliki?",
+        answer: "Saya memiliki beberapa skill, di antaranya: belajar pengembangan web (HTML, CSS, JavaScript), belajar pemrograman Arduino, dan desain grafis. Saya juga terbiasa bekerja dengan tim."
+    },
+    "3": {
+        question: "Apa kekurangan dan kelebihanmu?",
+        answer: "Kelebihan saya adalah cepat belajar, disiplin, dan suka berkolaborasi. Sedangkan kekurangan saya adalah individu kurang percaya diri / pemalu"
+    },
+    "4": {
+        question: "Apa project yang pernah kamu kerjakan?",
+        answer: "PROTOTIPE SISTEM ALARM PENDETEKSI ASAP DAN KEBAKARAN DINI MENGGUNAKAN KIPAS DAN POMPA AIR BERBASIS ARDUINO UNO ( Skripsi 2023 )."
+    },
+    "5": {
+        question: "Apa hobi kamu?",
+        answer: "Hobi saya adalah membaca ilmu teknologi, bermain game, dan menjelajahi hal-hal baru di dunia pemrograman."
+    },
+    "6": {
+        question: "Apa tujuan karir kamu?",
+        answer: "Tujuan karir saya adalah menjadi seorang yang bisa apa aja yang handal dan berkontribusi."
+    }
+};
+        // Fungsi untuk menampilkan atau menyembunyikan chatbot
+        function toggleChatbot() {
+            const chatbotContainer = document.getElementById("chatbotContainer");
+            chatbotContainer.style.display = chatbotContainer.style.display === "flex" ? "none" : "flex";
+        }
+
+        // Fungsi untuk menampilkan notifikasi
+        function showNotification() {
+            const notification = document.getElementById("chatbotNotification");
+            notification.style.display = "block";
+            setTimeout(() => {
+                notification.style.display = "none";
+            }, 50000); // Notifikasi hilang setelah 3 detik
+
+            // Memainkan suara notifikasi
+            const audio = new Audio(""); // Ganti dengan file suara Anda
+            audio.play();
+        }
+		
+		function sendMessage() {
+    const chatInput = document.getElementById("chatInput");
+    const chatbotBody = document.getElementById("chatbotBody");
+
+    if (chatInput.value.trim() === "") return;
+
+    // Tambahkan pesan pengguna
+    const userMessage = document.createElement("div");
+    userMessage.className = "message user";
+    userMessage.innerHTML = `<p>${chatInput.value}</p>`;
+    chatbotBody.appendChild(userMessage);
+
+    // Cari jawaban berdasarkan pertanyaan
+    const questionKey = Object.keys(questionsAndAnswers).find(key =>
+        chatInput.value.toLowerCase().includes(key)
+    );
+
+    if (questionKey) {
+        const botMessage = document.createElement("div");
+        botMessage.className = "message bot";
+        botMessage.innerHTML = `<p>${questionsAndAnswers[questionKey].answer}</p>`;
+        chatbotBody.appendChild(botMessage);
+
+        // Tampilkan notifikasi
+        showNotification();
+    } else {
+        const botMessage = document.createElement("div");
+        botMessage.className = "message bot";
+        botMessage.innerHTML = `<p>Maaf, saya tidak mengerti pertanyaan Anda. Silakan coba lagi.</p>`;
+        chatbotBody.appendChild(botMessage);
+    }
+
+    // Bersihkan input dan scroll ke bawah
+    chatInput.value = "";
+    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+}
+
+// Tampilkan pertanyaan yang tersedia saat chatbot dibuka
+function showAvailableQuestions() {
+    const chatbotBody = document.getElementById("chatbotBody");
+    const botMessage = document.createElement("div");
+    botMessage.className = "message bot";
+    let questionsList = "<p>Halo! Saya Chatbot Farid. Silakan ajukan pertanyaan:</p>";
+    Object.keys(questionsAndAnswers).forEach(key => {
+        questionsList += `<p>${key}. ${questionsAndAnswers[key].question}</p>`;
+    });
+    botMessage.innerHTML = questionsList;
+    chatbotBody.appendChild(botMessage);
+}
+
+// Panggil fungsi ini saat chatbot dibuka
+showAvailableQuestions();
+
+function showNotification() {
+    const notification = document.getElementById("chatbotNotification");
+    notification.style.display = "block";
+    setTimeout(() => {
+        notification.style.display = "none";
+    }, 3000); // Notifikasi hilang setelah 3 detik
+
+    // Memainkan suara notifikasi (opsional)
+    const audio = new Audio("notification-sound.mp3"); // Ganti dengan file suara Anda
+    audio.play();
+}
+
+function closeNotification() {
+    const notification = document.getElementById("chatbotNotification");
+    notification.style.display = "none";
+}
+
+  // Data kalender dan event Indonesia
+        const months = [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni", 
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+        ];
+
+        const events = {
+            1: [
+                { date: "1 Januari 2025", desc: "Tahun Baru Masehi" },
+                { date: "5 Januari 2025", desc: "Hari Keuangan Nasional" },
+                { date: "10 Januari 2025", desc: "Hari Lingkungan Hidup" },
+                { date: "15 Januari 2025", desc: "Hari Dharma Samudera" },
+                { date: "20 Januari 2025", desc: "Hari Kesehatan Nasional" },
+                { date: "25 Januari 2025", desc: "Hari Gizi Nasional" }
+            ],
+            2: [
+                { date: "10 Februari 2025", desc: "Tahun Baru Imlek" },
+                { date: "14 Februari 2025", desc: "Hari Valentine" },
+                { date: "20 Februari 2025", desc: "Hari Pekerja Nasional" }
+            ],
+            3: [
+                { date: "11 Maret 2025", desc: "Hari Raya Nyepi" },
+                { date: "17 Maret 2025", desc: "Hari Perawat Nasional" },
+                { date: "22 Maret 2025", desc: "Hari Air Sedunia" },
+				{ date: "1  Maret 2025", desc: "Pertama Ramadhan" }
+            ],
+            4: [
+                { date: "18 April 2025", desc: "Jumat Agung" },
+                { date: "21 April 2025", desc: "Hari Kartini" },
+			{ date: "1  April 2025", desc: "Hari Pertama Lebaran" }
+
+            ],
+            5: [
+                { date: "1 Mei 2025", desc: "Hari Buruh Internasional" },
+                { date: "2 Mei 2025", desc: "Hari Pendidikan Nasional" },
+                { date: "20 Mei 2025", desc: "Hari Kebangkitan Nasional" }
+            ],
+            6: [
+                { date: "1 Juni 2025", desc: "Hari Lahir Pancasila" },
+                { date: "5 Juni 2025", desc: "Hari Lingkungan Hidup Sedunia" }
+            ],
+            8: [
+                { date: "17 Agustus 2025", desc: "Hari Kemerdekaan RI" },
+                { date: "20 Agustus 2025", desc: "Hari Veteran Nasional" }
+            ],
+            12: [
+                { date: "25 Desember 2025", desc: "Hari Raya Natal" },
+                { date: "28 Desember 2025", desc: "Hari Dongeng Nasional" }
+            ]
+        };
+
+        // Fungsi untuk memeriksa apakah event sudah berlalu
+        function isPastEvent(eventDate) {
+            const currentDate = new Date();
+            const eventDateObj = new Date(eventDate);
+            return eventDateObj < currentDate;
+        }
+		
+		// Fungsi untuk membuat kalender
+        function createCalendar() {
+            const calendar = document.getElementById("calendar");
+            calendar.innerHTML = "";
+
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth();
+
+            months.forEach((month, index) => {
+                const monthEvents = events[index + 1] || [];
+                const isCurrentMonth = index === currentMonth;
+
+                const monthDiv = document.createElement("div");
+                monthDiv.className = "month";
+                monthDiv.innerHTML = `
+                    <h2>${month} ${currentYear}</h2>
+                    <ul>
+                        ${monthEvents.map(event => {
+                            const isPast = isPastEvent(event.date);
+                            return `
+                                <li class="${isPast ? 'past-event' : isCurrentMonth ? 'new-event' : 'coming-soon'}">
+                                    <span class="event-date">${event.date}</span>
+                                    <span class="event-desc">${event.desc}</span>
+                                    ${isPast ? '<span class="past-label">Sudah Selesai</span>' : 
+                                       isCurrentMonth ? '<span class="new-label">New</span>' : 
+                                       '<span class="coming-soon-label">Coming Soon</span>'}
+                                </li>
+                            `;
+                        }).join("")}
+                    </ul>
+                `;
+                calendar.appendChild(monthDiv);
+            });
+        }
+		
+		        // Fungsi untuk membuat daftar event
+        function createEventList() {
+            const eventList = document.getElementById("eventList");
+            eventList.innerHTML = "";
+
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth();
+
+            Object.keys(events).forEach(month => {
+                events[month].forEach(event => {
+                    const eventDate = new Date(event.date);
+                    const isCurrentMonth = eventDate.getMonth() === currentMonth;
+                    const isPast = isPastEvent(event.date);
+
+                    const listItem = document.createElement("li");
+                    listItem.className = isPast ? "past-event" : isCurrentMonth ? "new-event" : "coming-soon";
+                    listItem.innerHTML = `
+                        <span class="event-date">${event.date}</span>
+                        <span class="event-desc">${event.desc}</span>
+                        ${isPast ? '<span class="past-label">Sudah Selesai</span>' : 
+                           isCurrentMonth ? '<span class="new-label">New</span>' : 
+                           '<span class="coming-soon-label">Coming Soon</span>'}
+                    `;
+                    eventList.appendChild(listItem);
+                });
+            });
+        }
+
+        // Panggil fungsi saat halaman dimuat
+        document.addEventListener("DOMContentLoaded", () => {
+            createCalendar();
+            createEventList();
+        });
+ 
+		
+    </script>
+</body>
+</html>
