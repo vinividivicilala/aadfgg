@@ -47,12 +47,14 @@
         .big-text {
             font-size: 3rem;
             font-weight: bold;
+			 display: inline-block;
         }
         .highlight {
             background-color: #ccff00;
             color: black;
             padding: 2px 8px;
             border-radius: 5px;
+			 display: inline-block;
         }
         .sub-text {
             font-size: 1.5rem;
@@ -73,6 +75,7 @@
             border-radius: 10px;
             display: flex;
             align-items: center;
+			 margin-bottom: 30px; 
         }
         .blinking-dot {
             width: 12px;
@@ -138,12 +141,12 @@
 .marquee-wrapper {
     display: flex;
     width: max-content; /* Agar panjangnya cukup untuk looping */
-    animation: marquee 10s linear infinite;
+    animation: marquee 20s linear infinite;
 }
 
 /* Teks yang berjalan */
 .marquee-text {
-    font-size: 3rem;
+    font-size: 89px;
     font-weight: bold;
     color: black;
     white-space: nowrap;
@@ -206,12 +209,12 @@
 <body>
 
     <!-- Animasi Loading -->
-    <div id="loading">Loading</div>
+    <div id="loading">Good morning</div>
 
     <!-- Konten Utama -->
     <div id="home">
-        <h1 class="big-text">Welcome to <span class="highlight">Home</span></h1>
-        <p class="sub-text">Ini adalah halaman utama.</p>
+        <h1 class="big-text">Programming Learn Focus <span class="highlight">Arduino, Typescript,Tailwind, Astro</span></h1>
+        <p class="sub-text">BASED IN INDONESIA.</p>
 
         <!-- Jam di kanan atas -->
         <div class="clock-box">
@@ -269,7 +272,7 @@
         let dots = 0;
         let interval = setInterval(() => {
             dots = (dots + 1) % 4;
-            loading.textContent = "Loading" + ".".repeat(dots);
+            loading.textContent = "Bonjour" + "," + "Guten Morgen" + "." .repeat(dots);
         }, 500);
 
         setTimeout(() => {
