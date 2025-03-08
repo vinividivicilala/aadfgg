@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -170,23 +170,25 @@
     gap: 15px;
 }
 
-/* Item menu */
 .menu-item {
     display: flex;
     align-items: center;
     gap: 15px;
     cursor: pointer;
-    transition: color 0.3s ease-in-out;
+    font-weight: bold;
+    text-decoration: none; /* Hapus garis bawah link */
+    color: black; /* Warna default tetap putih */
 }
 
 .menu-item:hover {
-    color: red;
+    color: none; /* Tidak berubah warna saat hover */
 }
+
 
 /* SVG Panah ke kanan atas (default) */
 .arrow {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     transition: transform 0.3s ease-in-out;
     transform: rotate(0deg);
 }
@@ -238,24 +240,24 @@
 
  <!-- Menu di kanan atas -->
 <div class="menu-container">
-    <div class="menu-item">
-        Home 
+    <a class="menu-item" href="https://www.instagram.com/fardardinsyh/">
+        Instagram
         <svg class="arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 17L17 7M17 7V15M17 7H9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-    </div>
-    <div class="menu-item">
+    </a>
+    <a class="menu-item" href="#work">
         Work
         <svg class="arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 17L17 7M17 7V15M17 7H9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-    </div>
-    <div class="menu-item">
+    </a>
+    <a class="menu-item" href="#about">
         About
         <svg class="arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 17L17 7M17 7V15M17 7H9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-    </div>
+    </a>
 </div>
 
  
