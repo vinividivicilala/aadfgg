@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farid Ardiansyah</title>
+    <title></title>
     <style>
         * {
             margin: 0;
@@ -15,21 +15,25 @@
             background: black;
             color: white;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        /* Animasi Loading */
+        #loading {
             font-size: 2rem;
             font-weight: bold;
-            overflow: hidden;
-            text-align: left;
-        }
-        #loading {
-            opacity: 1;
-            transition: opacity 0.5s ease-in-out;
         }
         .hidden {
             opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
+
+        /* Konten Utama */
         #home {
             display: none;
             flex-direction: column;
@@ -56,23 +60,23 @@
             font-weight: normal;
         }
 
-        /* Kotak jam di kanan atas */
+        /* Jam di kanan atas */
         .clock-box {
             position: absolute;
             top: 20px;
             right: 20px;
             background: yellow;
             color: black;
-            padding: 10px 20px;
-            font-size: 1.5rem;
+            padding: 15px 25px;
+            font-size: 1.8rem;
             font-weight: bold;
             border-radius: 10px;
             display: flex;
             align-items: center;
         }
         .blinking-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             background: black;
             border-radius: 50%;
             margin-left: 5px;
@@ -86,12 +90,123 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+
+        /* Background kuning lebih tinggi */
+        .yellow-bg {
+            background: yellow;
+            color: black;
+            width: 100%;
+            padding: 250px 150px 100px; /* Lebih tinggi, bagian atas lebih besar */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            display: none; /* Sembunyikan saat loading */
+            overflow: hidden;
+        }
+        
+        /* Status "AVAILABLE FOR WORK" di kiri atas */
+        .status-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .status-dot {
+            width: 14px;
+            height: 14px;
+            background: green;
+            border-radius: 50%;
+            display: inline-block;
+            animation: blink 1s infinite;
+        }
+/* Container untuk teks berjalan */
+.marquee-container {
+    width: 100vw; /* Lebar penuh sesuai layar */
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    background: yellow;
+    padding: 10px 0;
+    white-space: nowrap;
+}
+
+/* Wrapper agar teks berjalan tanpa jeda */
+.marquee-wrapper {
+    display: flex;
+    width: max-content; /* Agar panjangnya cukup untuk looping */
+    animation: marquee 10s linear infinite;
+}
+
+/* Teks yang berjalan */
+.marquee-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: black;
+    white-space: nowrap;
+    padding-right: 2rem; /* Jeda antar teks */
+}
+
+@keyframes marquee {
+    from { transform: translateX(100vw); }
+    to { transform: translateX(-100%); } /* Supaya jalan penuh */
+}
+
+
+
+/* Menu di kanan atas dengan font lebih besar */
+.menu-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 35px; /* Ukuran lebih besar */
+    font-weight: bold;
+    gap: 15px;
+}
+
+/* Item menu */
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu-item:hover {
+    color: red;
+}
+
+/* SVG Panah ke kanan atas (default) */
+.arrow {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg);
+}
+
+/* Saat hover, panah jatuh ke bawah serong kanan */
+.menu-item:hover .arrow {
+    transform: translate(5px, 10px) rotate(90deg);
+}
+
+	
+
+
     </style>
 </head>
 <body>
 
-    <div id="loading">Arduino</div>
+    <!-- Animasi Loading -->
+    <div id="loading">Loading</div>
 
+    <!-- Konten Utama -->
     <div id="home">
         <h1 class="big-text">Welcome to <span class="highlight">Home</span></h1>
         <p class="sub-text">Ini adalah halaman utama.</p>
@@ -105,9 +220,50 @@
         </div>
     </div>
 
+   <!-- Background kuning lebih tinggi -->
+<div class="yellow-bg">
+    <!-- Status "AVAILABLE FOR WORK" di kiri atas -->
+    <div class="status-container">
+        <span class="status-dot"></span>
+        <span>AVAILABLE FOR WORK</span>
+    </div>
+
+    <!-- Teks Berjalan dari Ujung ke Ujung -->
+<div class="marquee-container">
+    <div class="marquee-wrapper">
+        <span class="marquee-text">🚀 HIRE ME NOW! 🚀 AVAILABLE FOR WORK 🚀</span>
+    </div>
+</div>
+
+
+ <!-- Menu di kanan atas -->
+<div class="menu-container">
+    <div class="menu-item">
+        Home 
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 17L17 7M17 7V15M17 7H9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <div class="menu-item">
+        Work
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 17L17 7M17 7V15M17 7H9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <div class="menu-item">
+        About
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 17L17 7M17 7V15M17 7H9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+</div>
+
+ 
     <script>
+        // Animasi Loading
         const loading = document.getElementById("loading");
         const home = document.getElementById("home");
+        const yellowBg = document.querySelector(".yellow-bg");
         let dots = 0;
         let interval = setInterval(() => {
             dots = (dots + 1) % 4;
@@ -120,8 +276,9 @@
             setTimeout(() => {
                 loading.style.display = "none";
                 home.style.display = "flex";
+                yellowBg.style.display = "block"; // Tampilkan background kuning setelah loading
             }, 500);
-        }, 3000); // Loading berlangsung selama 3 detik
+        }, 3000); // Loading selama 3 detik
 
         // Update jam real-time
         function updateClock() {
@@ -130,13 +287,13 @@
             let minutes = now.getMinutes();
             let seconds = now.getSeconds();
             let ampm = hours >= 12 ? "PM" : "AM";
-            hours = hours % 12 || 12; // Konversi ke format 12 jam
+            hours = hours % 12 || 12; // Format 12 jam
 
             document.getElementById("clock").textContent = 
                 `JKT [WIB] ${String(hours).padStart(2, "0")}.${String(minutes).padStart(2, "0")}.${String(seconds).padStart(2, "0")} ${ampm}`;
         }
         setInterval(updateClock, 1000);
-        updateClock(); // Jalankan sekali agar tidak ada delay
+        updateClock();
     </script>
 
 </body>
