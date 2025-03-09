@@ -208,12 +208,12 @@
 
 
    .intro {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             margin-bottom: 10px;
         }
         .subtext {
-            font-size: 14px;
+            font-size: 20px;
             color: gray;
             margin-bottom: 40px;
         }
@@ -256,7 +256,7 @@
             font-weight: bold;
         }
         .tag.website {
-            background: #EFE4DB;
+            background: #7FFF00;
             color: black;
         }
 		
@@ -266,10 +266,39 @@
             align-items: center;
             margin-top: 15px;
             padding: 0 10px;
-            font-size: 14px;
+            font-size: 20px;
             color: #333;
             font-weight: bold;
         }
+	
+	.info-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease-in-out;
+}
+
+.info-arrow {
+    width: 60px;
+    height: 60px;
+    margin-left: 5px;
+    transition: transform 0.3s ease-in-out, d 0.3s ease-in-out;
+}
+
+/* Efek hover: ubah panah dari serong atas kanan ke samping kanan */
+.info-link:hover .info-arrow path {
+    d: path("M7 12H17M17 12L13 8M17 12L13 16"); /* Panah berubah menjadi ke kanan */
+    stroke: #0073e6; /* Ubah warna panah */
+}
+
+.info-link:hover {
+    color: #0073e6; /* Ubah warna teks saat hover */
+}
+
+
 
 
     </style>
@@ -287,29 +316,39 @@
 		    <div style="height: 200vh;"></div>
 <div class="card">
     <div class="tags">
-        <div class="tag">UX/UI</div>
-        <div class="tag website">WEBSITE</div>
+        <div class="tag">Penelitian Ilmiah</div>
+        <div class="tag website">Arduino</div>
     </div>
     <div class="image-container">
-        <img src="images/5.jpg" alt="Project Image">
+        <img src="images/21.jpg" alt="Project Image">
     </div>
     <div class="info">
+	 <a href="https://example.com" class="info-link" target="_blank">
         <span>FRAMEWEB : A DIGITAL TRANSFORMATION</span>
-        <span>2020-2023</span>
+        <svg class="info-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 17L17 7M17 7L12 7M17 7L17 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+        <span> Mar 2022- Agustus 2022</span>
     </div>
 </div>
 
 <div class="card">
     <div class="tags">
-        <div class="tag">UX/UI</div>
-        <div class="tag website">WEBSITE</div>
+        <div class="tag">Skripsi</div>
+        <div class="tag website">Arduino</div>
     </div>
     <div class="image-container">
-        <img src="images/5.jpg" alt="Project Image">
+        <img src="images/20.jpg" alt="Project Image">
     </div>
     <div class="info">
+        <a href="https://example.com" class="info-link" target="_blank">
         <span>FRAMEWEB : A DIGITAL TRANSFORMATION</span>
-        <span>2020-2023</span>
+        <svg class="info-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 17L17 7M17 7L12 7M17 7L17 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+        <span> Mar 2023 - Agustus 2023</span>
     </div>
 </div>
 
