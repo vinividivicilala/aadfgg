@@ -107,9 +107,11 @@
     bottom: 0;
     left: 0;
             display: none; /* Sembunyikan saat loading */
-            overflow: hidden;
 			    z-index: 1000; /* Pastikan di atas elemen lain */
 				    transition: transform 0.3s ease-in-out;
+					 min-height: 50vh; /* Bisa disesuaikan */
+					 overflow: visible; 			  
+           
         }
         
         /* Status "AVAILABLE FOR WORK" di kiri atas */
@@ -462,8 +464,47 @@
     font-size: 14px;
     color: #888;
 	 margin-bottom: 40px; 
+	 
 }
 
+
+ .text-container {
+    height: 30px;
+    overflow: hidden;
+    font-size: 35px;
+    font-weight: bold;
+  position: absolute;
+            top: 20px;
+            left: 500px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+}
+
+
+.link-with-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Jarak antara teks dan panah */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 35px;
+    color: black;
+    transition: transform 0.3s ease-in-out;
+}
+
+.arrow-icon {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.link-with-arrow:hover .arrow-icon {
+    transform: translateX(5px); /* Animasi geser panah saat hover */
+}
+
+		
         
 		
 		
@@ -623,6 +664,26 @@
 
    <!-- Background kuning lebih tinggi -->
 <div class="yellow-bg">
+   <div class="text-container">
+            <div class="text" id="rotating-text">
+			<a href="" class="link-with-arrow">
+                <span>Email Me</span>
+				<a href="" class="link-with-arrow">
+                <span>Forum Chat</span>
+				<a href="" class="link-with-arrow">
+                <span>Coming Soon</span>
+                <a href="" class="link-with-arrow">
+                    <span>Coming Soon</span>
+                    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7V15M17 7H9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+				 </a>
+				  </a>
+            </div>
+        </div>
+		
+	
     <!-- Status "AVAILABLE FOR WORK" di kiri atas -->
     <div class="status-container">
         <span class="status-dot"></span>
@@ -659,6 +720,7 @@
         </svg>
     </a>
 </div>
+
 
 
   
@@ -735,7 +797,22 @@ window.addEventListener('scroll', function() {
         });
  
  
- 
+    document.addEventListener("DOMContentLoaded", function () {
+        const texts = document.querySelectorAll("#rotating-text span");
+        let index = 0;
+
+        function showNextText() {
+            texts.forEach(text => text.style.display = "none");
+            texts[index].style.display = "inline-block";
+
+            index = (index + 1) % texts.length; 
+            setTimeout(showNextText, 2000); // Ganti teks setiap 2 detik
+        }
+
+        showNextText();
+    });
+
+
  
     </script>
 
