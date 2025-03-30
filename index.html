@@ -574,8 +574,9 @@
             color: black;
         }
 
-	   .card-sorare {
-            width: 400px;
+	 
+  .card {
+            width: 420px;
             height: 350px;
             border-radius: 20px;
             padding: 20px;
@@ -583,22 +584,17 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            overflow: hidden;
+        }
+        .card-sorare {
             background-color: #0f1014;
             color: white;
         }
         .card-hedgehog {
-            width: 400px;
-            height: 350px;
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
             background-color: #f3ebff;
             color: black;
         }
-        .title-sorare, .title-hedgehog {
+        .title {
             font-size: 18px;
             display: flex;
             align-items: center;
@@ -611,19 +607,29 @@
             border-radius: 50%;
         }
 
-	    .dot-hedgehog {
+	       .dot-hedgehog {
             width: 6px;
             height: 6px;
             background-color: gray;
             border-radius: 50%;
         }
-        .image-sorare, .image-hedgehog {
+        .image-wrapper {
+            position: absolute;
+            bottom: 0;
+            right: 0;
             width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image {
+            width: 80%;
             height: auto;
             border-radius: 15px;
             object-fit: cover;
         }
-        .avatar-sorare, .avatar-hedgehog {
+        .avatar {
             position: absolute;
             bottom: 10px;
             left: 10px;
@@ -632,9 +638,16 @@
             border-radius: 50%;
             border: 2px solid white;
         }
+ .logo {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
 
 	    
-
 		
     </style>
 </head>
@@ -739,22 +752,28 @@
             </div>
         </div>
 
-<div class="container">
-        <div class="card-sorare">
-            <div class="title-sorare">
+ <div class="container">
+        <div class="card card-sorare">
+            <div class="title">
                 <div class="dot-sorare"></div>
                 SoRare App
             </div>
-            <img src="images/5.jpg" alt="SoRare App" class="image-sorare">
-            <img src="images/avatar1.jpg" alt="Avatar" class="avatar-sorare">
+            <div class="image-wrapper">
+                <img src="images/5.jpg" alt="SoRare App" class="image">
+            </div>
+            <img src="images/avatar1.jpg" alt="Avatar" class="avatar">
+            <img src="images/logo1.png" alt="Logo" class="logo">
         </div>
-        <div class="card-hedgehog">
-            <div class="title-hedgehog">
+        <div class="card card-hedgehog">
+            <div class="title">
                 <div class="dot-hedgehog"></div>
                 Hedgehog
             </div>
-            <img src="images/5.jpg" alt="Hedgehog" class="image-hedgehog">
-            <img src="images/avatar2.jpg" alt="Avatar" class="avatar-hedgehog">
+            <div class="image-wrapper">
+                <img src="images/5.jpg" alt="Hedgehog" class="image">
+            </div>
+            <img src="images/avatar2.jpg" alt="Avatar" class="avatar">
+            <img src="images/logo2.png" alt="Logo" class="logo">
         </div>
     </div>
 
