@@ -574,6 +574,54 @@
             color: black;
         }
 
+	     .card {
+            width: 400px;
+            height: 350px;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .dark {
+            background-color: #0f1014;
+            color: white;
+        }
+        .light {
+            background-color: #f3ebff;
+            color: black;
+        }
+        .title {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: gray;
+            border-radius: 50%;
+        }
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+
+
+	     .avatar {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
 		
     </style>
 </head>
@@ -677,6 +725,25 @@
                 <span style="background-color: white; color: black; padding: 5px 10px; border-radius: 50%; margin-left: 10px; font-size: 14px;">+</span>
             </div>
         </div>
+
+<div class="container">
+        <div class="card dark">
+            <div class="title">
+                <div class="dot"></div>
+                SoRare App
+            </div>
+            <img src="images/5.jpg" alt="SoRare App" class="image">
+            <img src="images/avatar1.jpg" alt="Avatar" class="avatar">
+        </div>
+        <div class="card light">
+            <div class="title">
+                <div class="dot"></div>
+                Hedgehog
+            </div>
+            <img src="images/5.jpg" alt="Hedgehog" class="image">
+            <img src="images/avatar2.jpg" alt="Avatar" class="avatar">
+        </div>
+    </div>
 
         <div id="popup-overlay"></div>
         <div id="popup" style="display: none;">
