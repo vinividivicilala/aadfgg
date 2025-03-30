@@ -504,55 +504,61 @@
     transform: translateX(5px); /* Animasi geser panah saat hover */
 }
 
-  .badge-container {
+        .badge-container {
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
         .badge {
             display: flex;
             align-items: center;
-            padding: 10px 15px;
-            border-radius: 15px;
+            padding: 8px 12px;
+            border-radius: 12px;
             background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-width: 140px;
         }
         .badge.secondary {
             background: transparent;
-            border: 2px dashed #ddd;
-            opacity: 0.5;
+            border: 1.5px dashed #ccc;
+            opacity: 0.7;
+            box-shadow: none;
         }
         .badge-content {
             display: flex;
             flex-direction: column;
-            margin-right: 10px;
+            flex-grow: 1;
         }
         .badge-title {
             font-size: 10px;
             color: gray;
             text-transform: uppercase;
+            font-weight: bold;
         }
         .badge-name {
             font-size: 14px;
             font-weight: bold;
+            color: black;
         }
-        .badge-icon {
-            width: 30px;
-            height: 30px;
+
+	       .badge-icon {
+            width: 32px;
+            height: 32px;
             border-radius: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: darkgreen;
-            color: white;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
+            margin-left: 10px;
         }
-	  .secondary .badge-icon {
-            background: rgba(0, 0, 0, 0.1);
-            color: rgba(0, 0, 0, 0.3);
-        }  
-		
-        
+        .primary .badge-icon {
+            background: #0a5e3b;
+            color: white;
+        }
+        .secondary .badge-icon {
+            background: #f0f0f0;
+            color: #ccc;
+        }
 		
 		
     </style>
@@ -566,8 +572,9 @@
     <div id="home">
         <h1 class="big-text">Programming Learn Focus <span class="highlight">Arduino, Typescript,Tailwind, Astro</span></h1>
         <p class="sub-text">BASED IN INDONESIA.</p>
-	     <div class="badge-container">
-        <div class="badge">
+
+	    <div class="badge-container">
+        <div class="badge primary">
             <div class="badge-content">
                 <span class="badge-title">Now at</span>
                 <span class="badge-name">Everly Health</span>
