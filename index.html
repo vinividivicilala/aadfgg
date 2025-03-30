@@ -504,8 +504,7 @@
     transform: translateX(5px); /* Animasi geser panah saat hover */
 }
 
-      
-           .badge-container {
+        .badge-container {
             display: flex;
             gap: 12px;
         }
@@ -520,9 +519,9 @@
             position: relative;
         }
         .badge.secondary {
-            background: transparent;
+            background: white;
             border: 1.5px dashed #888;
-            opacity: 0.6;
+            opacity: 1;
             box-shadow: none;
         }
         .badge-content {
@@ -536,23 +535,13 @@
             color: gray;
             text-transform: uppercase;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-        }
-        .badge-title::before {
-            content: "";
-            width: 5px;
-            height: 5px;
-            background: gray;
-            border-radius: 50%;
-            margin-right: 5px;
         }
         .badge-name {
             font-size: 14px;
             font-weight: bold;
             color: black;
         }
-        .badge-icon {
+       .badge-icon {
             width: 32px;
             height: 32px;
             border-radius: 8px;
@@ -568,11 +557,11 @@
             color: white;
         }
         .secondary .badge-icon {
-            background: #888;
-            color: white;
-            opacity: 0.6;
+            background: #ddd;
+            color: black;
         }
-
+       
+      
 
 		
     </style>
