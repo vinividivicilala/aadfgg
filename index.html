@@ -504,11 +504,7 @@
     transform: translateX(5px); /* Animasi geser panah saat hover */
 }
 
-        .badge-container {
-            display: flex;
-            gap: 12px;
-        }
-        .badge {
+  .badge {
             display: flex;
             align-items: center;
             padding: 10px 15px;
@@ -535,13 +531,24 @@
             color: gray;
             text-transform: uppercase;
             font-weight: bold;
+            display: flex;
+            align-items: center;
         }
-        .badge-name {
+        .badge-title.now-at::before {
+            content: "";
+            width: 5px;
+            height: 5px;
+            background: #0a5e3b;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+       
+              .badge-name {
             font-size: 14px;
             font-weight: bold;
             color: black;
         }
-       .badge-icon {
+        .badge-icon {
             width: 32px;
             height: 32px;
             border-radius: 8px;
@@ -560,8 +567,6 @@
             background: #ddd;
             color: black;
         }
-       
-      
 
 		
     </style>
@@ -576,10 +581,10 @@
         <h1 class="big-text">Programming Learn Focus <span class="highlight">Arduino, Typescript,Tailwind, Astro</span></h1>
         <p class="sub-text">BASED IN INDONESIA.</p>
 
-	 <div class="badge-container">
+	    <div class="badge-container">
         <div class="badge primary">
             <div class="badge-content">
-                <span class="badge-title">Now at</span>
+                <span class="badge-title now-at">Now at</span>
                 <span class="badge-name">Everly Health</span>
             </div>
             <div class="badge-icon">e</div>
