@@ -574,8 +574,7 @@
             color: black;
         }
 
-	 
-  .card {
+	  .card-sorare, .card-hedgehog {
             width: 420px;
             height: 350px;
             border-radius: 20px;
@@ -594,7 +593,7 @@
             background-color: #f3ebff;
             color: black;
         }
-        .title {
+        .title-sorare, .title-hedgehog {
             font-size: 18px;
             display: flex;
             align-items: center;
@@ -606,14 +605,14 @@
             background-color: gray;
             border-radius: 50%;
         }
-
-	       .dot-hedgehog {
+        .dot-hedgehog {
             width: 6px;
             height: 6px;
             background-color: gray;
             border-radius: 50%;
         }
-        .image-wrapper {
+
+	      .image-wrapper-sorare, .image-wrapper-hedgehog {
             position: absolute;
             bottom: 0;
             right: 0;
@@ -623,13 +622,13 @@
             align-items: center;
             justify-content: center;
         }
-        .image {
+        .image-sorare, .image-hedgehog {
             width: 80%;
             height: auto;
             border-radius: 15px;
             object-fit: cover;
         }
-        .avatar {
+        .avatar-sorare, .avatar-hedgehog {
             position: absolute;
             bottom: 10px;
             left: 10px;
@@ -638,7 +637,7 @@
             border-radius: 50%;
             border: 2px solid white;
         }
- .logo {
+        .logo-sorare, .logo-hedgehog {
             position: absolute;
             bottom: 10px;
             right: 10px;
@@ -646,7 +645,7 @@
             height: 30px;
             border-radius: 50%;
         }
-
+           
 	    
 		
     </style>
@@ -753,27 +752,27 @@
         </div>
 
  <div class="container">
-        <div class="card card-sorare">
-            <div class="title">
+        <div class="card-sorare">
+            <div class="title-sorare">
                 <div class="dot-sorare"></div>
                 SoRare App
             </div>
-            <div class="image-wrapper">
-                <img src="images/5.jpg" alt="SoRare App" class="image">
+            <div class="image-wrapper-sorare">
+                <img src="images/5.jpg" alt="SoRare App" class="image-sorare">
             </div>
-            <img src="images/avatar1.jpg" alt="Avatar" class="avatar">
-            <img src="images/logo1.png" alt="Logo" class="logo">
+            <img src="images/avatar1.jpg" alt="Avatar" class="avatar-sorare">
+            <img src="images/logo1.png" alt="Logo" class="logo-sorare">
         </div>
-        <div class="card card-hedgehog">
-            <div class="title">
+        <div class="card-hedgehog">
+            <div class="title-hedgehog">
                 <div class="dot-hedgehog"></div>
                 Hedgehog
             </div>
-            <div class="image-wrapper">
-                <img src="images/5.jpg" alt="Hedgehog" class="image">
+            <div class="image-wrapper-hedgehog">
+                <img src="images/5.jpg" alt="Hedgehog" class="image-hedgehog">
             </div>
-            <img src="images/avatar2.jpg" alt="Avatar" class="avatar">
-            <img src="images/logo2.png" alt="Logo" class="logo">
+            <img src="images/avatar2.jpg" alt="Avatar" class="avatar-hedgehog">
+            <img src="images/logo2.png" alt="Logo" class="logo-hedgehog">
         </div>
     </div>
 
