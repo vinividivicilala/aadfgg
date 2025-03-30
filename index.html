@@ -504,43 +504,55 @@
     transform: translateX(5px); /* Animasi geser panah saat hover */
 }
 
-        .badge-container {
+      
+           .badge-container {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
         .badge {
             display: flex;
             align-items: center;
-            padding: 8px 12px;
-            border-radius: 12px;
+            padding: 10px 15px;
+            border-radius: 20px;
             background: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            min-width: 140px;
+            min-width: 160px;
+            position: relative;
         }
         .badge.secondary {
             background: transparent;
-            border: 1.5px dashed #ccc;
-            opacity: 0.7;
+            border: 1.5px dashed #888;
+            opacity: 0.6;
             box-shadow: none;
         }
         .badge-content {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
+            position: relative;
         }
         .badge-title {
             font-size: 10px;
             color: gray;
             text-transform: uppercase;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .badge-title::before {
+            content: "";
+            width: 5px;
+            height: 5px;
+            background: gray;
+            border-radius: 50%;
+            margin-right: 5px;
         }
         .badge-name {
             font-size: 14px;
             font-weight: bold;
             color: black;
         }
-
-	       .badge-icon {
+        .badge-icon {
             width: 32px;
             height: 32px;
             border-radius: 8px;
@@ -556,10 +568,12 @@
             color: white;
         }
         .secondary .badge-icon {
-            background: #f0f0f0;
-            color: #ccc;
+            background: #888;
+            color: white;
+            opacity: 0.6;
         }
-		
+
+
 		
     </style>
 </head>
@@ -573,7 +587,7 @@
         <h1 class="big-text">Programming Learn Focus <span class="highlight">Arduino, Typescript,Tailwind, Astro</span></h1>
         <p class="sub-text">BASED IN INDONESIA.</p>
 
-	    <div class="badge-container">
+	 <div class="badge-container">
         <div class="badge primary">
             <div class="badge-content">
                 <span class="badge-title">Now at</span>
