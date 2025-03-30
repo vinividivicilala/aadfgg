@@ -504,6 +504,53 @@
     transform: translateX(5px); /* Animasi geser panah saat hover */
 }
 
+  .badge-container {
+            display: flex;
+            gap: 15px;
+        }
+        .badge {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .badge.secondary {
+            background: transparent;
+            border: 2px dashed #ddd;
+            opacity: 0.5;
+        }
+        .badge-content {
+            display: flex;
+            flex-direction: column;
+            margin-right: 10px;
+        }
+        .badge-title {
+            font-size: 10px;
+            color: gray;
+            text-transform: uppercase;
+        }
+        .badge-name {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .badge-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: darkgreen;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+	  .secondary .badge-icon {
+            background: rgba(0, 0, 0, 0.1);
+            color: rgba(0, 0, 0, 0.3);
+        }  
 		
         
 		
@@ -519,6 +566,22 @@
     <div id="home">
         <h1 class="big-text">Programming Learn Focus <span class="highlight">Arduino, Typescript,Tailwind, Astro</span></h1>
         <p class="sub-text">BASED IN INDONESIA.</p>
+	     <div class="badge-container">
+        <div class="badge">
+            <div class="badge-content">
+                <span class="badge-title">Now at</span>
+                <span class="badge-name">Everly Health</span>
+            </div>
+            <div class="badge-icon">e</div>
+        </div>
+        <div class="badge secondary">
+            <div class="badge-content">
+                <span class="badge-title">Building</span>
+                <span class="badge-name">HUNO</span>
+            </div>
+            <div class="badge-icon">H</div>
+        </div>
+    </div>
 		
 		    <div style="height: 200vh;"></div>
 <div class="card">
