@@ -574,7 +574,7 @@
             color: black;
         }
 
-	     .card {
+	   .card-sorare {
             width: 400px;
             height: 350px;
             border-radius: 20px;
@@ -583,36 +583,47 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-        }
-        .dark {
             background-color: #0f1014;
             color: white;
         }
-        .light {
+        .card-hedgehog {
+            width: 400px;
+            height: 350px;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
             background-color: #f3ebff;
             color: black;
         }
-        .title {
+        .title-sorare, .title-hedgehog {
             font-size: 18px;
             display: flex;
             align-items: center;
             gap: 5px;
         }
-        .dot {
+        .dot-sorare {
             width: 6px;
             height: 6px;
             background-color: gray;
             border-radius: 50%;
         }
-        .image {
+
+	    .dot-hedgehog {
+            width: 6px;
+            height: 6px;
+            background-color: gray;
+            border-radius: 50%;
+        }
+        .image-sorare, .image-hedgehog {
             width: 100%;
             height: auto;
             border-radius: 15px;
             object-fit: cover;
         }
-
-
-	     .avatar {
+        .avatar-sorare, .avatar-hedgehog {
             position: absolute;
             bottom: 10px;
             left: 10px;
@@ -621,6 +632,8 @@
             border-radius: 50%;
             border: 2px solid white;
         }
+
+	    
 
 		
     </style>
@@ -727,21 +740,21 @@
         </div>
 
 <div class="container">
-        <div class="card dark">
-            <div class="title">
-                <div class="dot"></div>
+        <div class="card-sorare">
+            <div class="title-sorare">
+                <div class="dot-sorare"></div>
                 SoRare App
             </div>
-            <img src="images/5.jpg" alt="SoRare App" class="image">
-            <img src="images/avatar1.jpg" alt="Avatar" class="avatar">
+            <img src="images/5.jpg" alt="SoRare App" class="image-sorare">
+            <img src="images/avatar1.jpg" alt="Avatar" class="avatar-sorare">
         </div>
-        <div class="card light">
-            <div class="title">
-                <div class="dot"></div>
+        <div class="card-hedgehog">
+            <div class="title-hedgehog">
+                <div class="dot-hedgehog"></div>
                 Hedgehog
             </div>
-            <img src="images/5.jpg" alt="Hedgehog" class="image">
-            <img src="images/avatar2.jpg" alt="Avatar" class="avatar">
+            <img src="images/5.jpg" alt="Hedgehog" class="image-hedgehog">
+            <img src="images/avatar2.jpg" alt="Avatar" class="avatar-hedgehog">
         </div>
     </div>
 
