@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <style>
-        * {
+       * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -17,11 +17,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            justify-content: flex-start; /* Ubah justify-content */
+            min-height: 100vh; /* Ubah height menjadi min-height */
             text-align: center;
-            overflow-y: auto; /* Aktifkan scroll vertikal */
-
+            overflow-y: auto;
         }
         
         /* Animasi Loading */
@@ -34,17 +33,16 @@
             transition: opacity 0.5s ease-in-out;
         }
 
-        /* Konten Utama */
         #home {
-            display: none;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            width: 100%;
-            height: 100vh;
-            position: relative;
-            padding: 60px 40px;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Tetap flex-start untuk top-content */
+    justify-content: flex-start;
+    width: 100%;
+    padding: 60px 40px;
+    box-sizing: border-box;
+}
+       
         .big-text {
             font-size: 3rem;
             font-weight: bold;
@@ -95,23 +93,20 @@
             50% { opacity: 0; }
         }
 
-        /* Background kuning lebih tinggi */
+ /* ... (CSS lainnya) ... */
         .yellow-bg {
             background: yellow;
             color: black;
             width: 100%;
-            padding: 250px 150px 100px; /* Lebih tinggi, bagian atas lebih besar */
-			
-			 /* Menempatkan elemen di bawah halaman, bukan viewport */
-                position: fixed;
-    bottom: 0;
-    left: 0;
-            display: none; /* Sembunyikan saat loading */
-			    z-index: 1000; /* Pastikan di atas elemen lain */
-				    transition: transform 0.3s ease-in-out;
-					 min-height: 50vh; /* Bisa disesuaikan */
-					 overflow: visible; 			  
-           
+            padding: 250px 150px 100px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            display: none;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+            min-height: 50vh;
+            overflow: visible;
         }
         
         /* Status "AVAILABLE FOR WORK" di kiri atas */
@@ -454,8 +449,8 @@
             left: 40px;
             font-size: 36px;
             font-weight: 900;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            color: Black;
+            
         }
 	     .ui-link {
             position: absolute;
@@ -470,8 +465,8 @@
             gap: 8px;
         }
         .ui-link svg {
-            width: 40px;
-            height: 40px;
+            width: 70px;
+            height: 70px;
             fill: none;
             stroke: black;
             stroke-width: 2;
@@ -480,7 +475,13 @@
             transform: none;
         }
 
-	      
+	      .middle-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Mengatur elemen-elemen di tengah horizontal */
+}
+
      
        
            
@@ -501,7 +502,7 @@
 	    <div class="badge-container">
         <div class="badge primary">
             <div class="badge-content">
-                <span class="badge-title now-at">Now at</span>
+                <span class="badge-title now-at">Sekarang Kerja</span>
                 <span class="badge-name">Coming Soon</span>
             </div>
             <div class="badge-icon">F</div>
@@ -515,32 +516,32 @@
         </div>
     </div>
 		
-		  
+		  <div class="middle-content">
 	    <div class="ui-container">
-        <span class="ui-title">Coming Soon</span>
-        <a href="#" class="ui-link">Coming Soon
+        <span class="ui-title">SKRIPSI</span>
+        <a href="https://blogprojectskripsi.netlify.app/" class="ui-link">Blog Skripsi
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </a>
-        <img src="images/5.jpg" alt="">
+        <img src="images/23.jpg" alt="">
         <div class="ui-button-container">
-            <button class="ui-button">Coming Soon</button>
-            <button class="ui-button">Coming Soon</button>
+            <button class="ui-button">PENDETEKSI ASAP</button>
+            <button class="ui-button">ARDUINO UNO </button>
         </div>
     </div>
 
 	     <div class="ui-container">
-        <span class="ui-title">Coming Soon</span>
-        <a href="#" class="ui-link">Coming Soon
+        <span class="ui-title">Penulisan Ilmiah</span>
+        <a href="#" class="ui-link"> Penulisan Ilmiah
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </a>
-        <img src="images/5.jpg" alt="">
+        <img src="images/22.jpg" alt="">
         <div class="ui-button-container">
-            <button class="ui-button">Coming Soon</button>
-            <button class="ui-button">Coming Soon</button>
+            <button class="ui-button">PENYIRAMAN TANAMAN OTOMATIS</button>
+            <button class="ui-button">ARDUINO UNO</button>
         </div>
     </div>
 
