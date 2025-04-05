@@ -219,42 +219,7 @@
             color: gray;
             margin-bottom: 40px;
         }
-        .card {
-            width: 80%;
-            max-width: 900px;
-            background: #F4F0ED;
-            border-radius: 50px;
-            padding: 20px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-		  margin-bottom: 50px; /* Bisa ubah angkanya sesuai keinginan */
-				    margin-top: 50px; /* Atur jarak dari atas */
-        }
-        .image-container {
-            width: 100%;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-		
-		 .image-container img {
-            width: 100%;
-            display: block;
-            border-radius: 15px;
-        }
-        .tags {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-        .tag {
-            background: #E27C72;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 15px;
-            font-size: 14px;
+       
             font-weight: bold;
         }
         .tag.website {
@@ -292,27 +257,75 @@
     transition: transform 0.3s ease-in-out, d 0.3s ease-in-out;
 }
 
-/* Efek hover: ubah panah dari serong atas kanan ke samping kanan */
-.info-link:hover .info-arrow path {
-    d: path("M7 12H17M17 12L13 8M17 12L13 16"); /* Panah berubah menjadi ke kanan */
-    stroke: #0073e6; /* Ubah warna panah */
-}
+  .ui-container {
+            position: relative;
+            width: 900px;
+            height: 600px;
+            background: #222;
+            border-radius: 50px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+		      margin-top: 40px;
+        }
+        .ui-container img {
+            width: 100%;
+            height: auto;
+        }
+        .ui-button-container {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            display: flex;
+            gap: 20px;
+        }
+        .ui-button {
+            padding: 12px 24px;
+            background: white;
+            border-radius: 25px;
+            color: green;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .ui-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .ui-title {
+	position: absolute;
+            top: 30px;
+            left: 40px;
+            font-size: 36px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+	     .ui-link {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 29px;
+            font-weight: bold;
+            color: black;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ui-link svg {
+            width: 40px;
+            height: 40px;
+            fill: none;
+            stroke: black;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transform: none;
+        }
 
-.info-link:hover {
-    color: #0073e6; /* Ubah warna teks saat hover */
-}
-
-
-.image-below-card {
-    text-align: center; /* Pusatkan gambar */
-    margin-top: 20px; /* Tambahkan jarak dari kartu */
-}
-
-.image-below-card img {
-    max-width: 80%; /* Sesuaikan ukuran gambar */
-    height: auto;
-    border-radius: 10px; /* Opsional: tambahkan sudut bulat */
-}
 
 
  #popup {
@@ -574,73 +587,8 @@
             color: black;
         }
 
-	         .ui-container {
-            position: relative;
-            width: 900px;
-            height: 600px;
-            background: #222;
-            border-radius: 50px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .ui-container img {
-            width: 100%;
-            height: auto;
-        }
-        .ui-button-container {
-            position: absolute;
-            bottom: 30px;
-            right: 40px;
-            display: flex;
-            gap: 20px;
-        }
-        .ui-button {
-            padding: 12px 24px;
-            background: white;
-            border-radius: 25px;
-            color: green;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .ui-button:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-        .ui-title {
-            position: absolute;
-            top: 30px;
-            left: 40px;
-            font-size: 36px;
-            font-weight: 900;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-	     .ui-link {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            font-size: 29px;
-            font-weight: bold;
-            color: black;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .ui-link svg {
-            width: 40px;
-            height: 40px;
-            fill: none;
-            stroke: black;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            transform: none;
-        }
+	      
+     
        
            
 	    
@@ -674,8 +622,25 @@
         </div>
     </div>
 		
-		    <div style="height: 600vh;"></div>
-	        <div class="ui-container">
+		    <div style="height: 200vh;"></div>
+
+
+
+
+	<div class="ui-container">
+        <span class="ui-title">PROTOTIPE SISTEM ALARM PENDETEKSI ASAP DAN KEBAKARAN DINI MENGGUNAKAN KIPAS DAN POMPA AIR BERBASIS ARDUINO UNO</span>
+        <a href="https://blogprojectskripsi.netlify.app/" class="ui-link">>Skripsi
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+        <img src="images/21.jpg" alt="">
+        <div class="ui-button-container">
+            <button class="ui-button">Arduino</button>
+            <button class="ui-button">Mar 2023</button>
+        </div>
+    </div>
+	    	<div class="ui-container">
         <span class="ui-title">Coming Soon</span>
         <a href="#" class="ui-link">Coming Soon
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -688,6 +653,23 @@
             <button class="ui-button">Coming Soon</button>
         </div>
     </div>
+
+	    	<div class="ui-container">
+        <span class="ui-title">Coming Soon</span>
+        <a href="#" class="ui-link">Coming Soon
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+        <img src="images/5.jpg" alt="">
+        <div class="ui-button-container">
+            <button class="ui-button">Coming Soon</button>
+            <button class="ui-button">Coming Soon</button>
+        </div>
+    </div>
+
+
+	    
 	    
 <div class="card">
     <div class="tags">
@@ -705,25 +687,6 @@
         </svg>
     </a>
         <span> Mar 2022- Agustus 2022</span>
-    </div>
-</div>
-
-<div class="card">
-    <div class="tags">
-        <div class="tag">Skripsi</div>
-        <div class="tag website">Arduino</div>
-    </div>
-    <div class="image-container">
-        <img src="images/21.jpg" alt="Project Image">
-    </div>
-    <div class="info">
-        <a href="https://blogprojectskripsi.netlify.app/" class="info-link" target="_blank">
-        <span>PROTOTIPE SISTEM ALARM PENDETEKSI ASAP DAN KEBAKARAN DINI MENGGUNAKAN KIPAS DAN POMPA AIR BERBASIS ARDUINO UNO </span>
-        <svg class="info-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 17L17 7M17 7L12 7M17 7L17 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </a>
-        <span> Mar 2023 - Agustus 2023</span>
     </div>
 </div>
 
